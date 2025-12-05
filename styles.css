@@ -1,0 +1,175 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.container {
+    display: grid;
+    grid-template-rows:70px 1fr 100px; 
+    background-color: #FAF4E7;
+    width: 100%;
+}
+
+.container-header {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    background-color: #DDCBB1;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px
+}
+
+#header-font {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 50px;
+    color: #48614A;
+    margin-right: 1px;
+    margin-left: 250px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.container-header.show-header #header-font.hidden-text {
+    opacity: 1;
+}
+
+.overlay-button {
+    position: absolute;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#button-left {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    left: 40%;
+    font-size: 18px;
+}
+
+#button-right {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    left: 60%;
+    font-size: 18px;
+}
+
+
+#overlay-area {
+    position: relative;
+    height: calc(100vh - 70px);
+    margin-bottom: 20px;
+    padding-top: 70px;
+    margin-top: -70px;
+}
+
+#overlay-text {
+    /* Positionierung über dem Bild, aber mit Versatz nach unten */
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    /* Der Text muss jetzt unter dem 70px hohen Header zentriert werden, 
+       deshalb der Versatz von 35px (halbe Header-Höhe) nach unten */
+    transform: translate(-50%, calc(-50% + 35px)); 
+    
+    /* Stile für den großen Text */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 8em; 
+    color: #FBF4E8; 
+    z-index: 500; 
+    transition: opacity 0.3s ease-out; 
+}
+
+.hamburger-menu {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {opacity: 0;}
+
+/* Rotate last bar */
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+#logo{ 
+    height: 50px;
+    margin-right: 100px;
+    margin-left: 50px;
+}
+
+#icon {
+    height: 35px;
+    margin-right: 50px;
+}
+
+.button {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    background-color: #FBF4E8;
+    border: 1px solid #63503D;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.button:hover {
+    background-color: #63503D; 
+    color: white;
+    border: 1px solid #FBF4E8;
+}
+
+#button-login {
+    margin-left: 200px;
+}
+
+#button-signup {
+    margin-left: 1px;
+    margin-right: 20px;
+}
+
+.container-main {
+    background-color: palevioletred;
+}
+
+#main-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
