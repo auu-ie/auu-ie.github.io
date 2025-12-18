@@ -1,44 +1,69 @@
-// Hamburger-Funktion 
+// 1. Hamburger-Menü
 function myFunction(x) {
   x.classList.toggle("change");
 }
 
-// 1. Elemente abrufen
-const stickyHeader = document.getElementById('sticky-header');
-const overlayText = document.getElementById('overlay-text');
-
-
-// 2. Berechnung des Übergabepunkts
-const headerHeight = 70; // Höhe des Headers in px, muss mit CSS übereinstimmen
-
-// Funktion, die beim Scrollen ausgeführt wird
+// 2. Scroll-Effekte (Header & Overlay)
 function handleScroll() {
-    // Liefert die Position des Overlay-Text-Elements relativ zum Viewport
-    const textRect = overlayText.getBoundingClientRect();
-    
-    // Bedingung 1: Großer Text (Overlay-Text) ausblenden/verschwinden lassen
-    // Sobald der obere Rand des Overlay-Texts (textRect.top) die Unterkante des Headers (headerHeight = 70px) erreicht
-    if (textRect.top < headerHeight) {
-        // Text fängt an, hinter dem Header zu verschwinden -> Ausblenden
-        overlayText.style.opacity = '0'; 
-    } else {
-        // Text ist vollständig unter dem Header sichtbar -> Einblenden
-        overlayText.style.opacity = '1';
-    }
-    
-    // Bedingung 2: Kleinen Text im Header einblenden
-    // Der Übergang soll stattfinden, wenn der UNTERE Rand des Overlay-Texts (textRect.bottom) 
-    // den OBEREN Rand des Viewports (0) erreicht oder überschreitet.
-    const topOfViewport = 0; 
-    
-    if (textRect.bottom < topOfViewport) {
-        // Der große Text ist komplett aus dem Bild verschwunden -> Header-Text einblenden
-        stickyHeader.classList.add('show-header');
-    } else {
-        // Der große Text ist noch sichtbar -> Header-Text ausblenden
-        stickyHeader.classList.remove('show-header');
-    }
+  const stickyHeader = document.getElementById('sticky-header');
+  const overlayText = document.getElementById('overlay-text');
+  const headerHeight = 90;
+
+  // Falls kein Overlay-Text da ist (z.B. Kontaktseite), Header immer zeigen
+  if (!overlayText) {
+    stickyHeader.classList.add('show-header');
+    return;
+  }
+
+  const textRect = overlayText.getBoundingClientRect();
+
+  // Overlay ausblenden, wenn es den Header berührt
+  overlayText.style.opacity = (textRect.top < headerHeight) ? '0' : '1';
+
+  // Header einblenden, wenn der Overlay-Text oben komplett aus dem Bild ist
+  if (textRect.bottom < 0) {
+    stickyHeader.classList.add('show-header');
+  } else {
+    stickyHeader.classList.remove('show-header');
+  }
 }
 
-// Event-Listener hinzufügen
 window.addEventListener('scroll', handleScroll);
+
+// 3. Filter-Funktion (Produkte/Spalten)
+function filterSelection(category) {
+  const columns = document.querySelectorAll(".column");
+  
+  columns.forEach(col => {
+    // Wenn "all" gewählt oder Kategorie im Klassennamen enthalten ist
+    if (col.classList.contains(category)) {
+      col.classList.add("show");
+    } else {
+      col.classList.remove("show");
+    }
+  });
+}
+
+// Initialer Aufruf
+filterSelection("twenty");
+
+// 4. Button-Logik (Aktiv-Status)
+const btnContainer = document.getElementById("buttonContainer");
+if (btnContainer) {
+  const btns = btnContainer.querySelectorAll(".button");
+
+  btns.forEach(btn => {
+    // Initial den richtigen Button auf "active" setzen (20$/kg)
+    if (btn.textContent.includes('20$/kg')) {
+      btn.classList.add("active");
+    }
+
+    // Klick-Event für alle Buttons
+    btn.addEventListener("click", function() {
+      // Entferne "active" von allen anderen Buttons im Container
+      btnContainer.querySelector(".button.active")?.classList.remove("active");
+      // Füge "active" dem geklickten Button hinzu
+      this.classList.add("active");
+    });
+  });
+}

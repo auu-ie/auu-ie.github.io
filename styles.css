@@ -2,35 +2,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-.container {
+body {
+    margin: 0; /* Entfernt Standard-Margin */
+    padding: 0;
+    min-height: 100vh; 
+    padding-top: 90px;
     display: grid;
-    grid-template-rows:70px 1fr 100px; 
+    grid-template-rows: auto 1fr auto;
     background-color: #FAF4E7;
     width: 100%;
+}
+
+.contact {
+    grid-template-rows: auto 1fr auto;
 }
 
 .container-header {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
-    justify-content: space-between;
     align-items: center;
     align-content: center;
     background-color: #DDCBB1;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
-    height: 70px
+    height: 90px;
+    z-index: 2;
 }
 
 #header-font {
     font-family: 'Montserrat';
     font-weight: 700;
-    font-size: 50px;
+    font-size: 70px;
     color: #48614A;
     margin-right: 1px;
-    margin-left: 250px;
+    margin-left: 400px;
     opacity: 0;
     transition: opacity 0.3s ease-out;
 }
@@ -43,7 +49,6 @@
     position: absolute;
     top: 80%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
 }
 
 #button-left {
@@ -52,7 +57,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     left: 40%;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 #button-right {
@@ -61,16 +66,17 @@
     padding-top: 20px;
     padding-bottom: 20px;
     left: 60%;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 
 #overlay-area {
+    grid-row: 1;
     position: relative;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 90px);
     margin-bottom: 20px;
-    padding-top: 70px;
-    margin-top: -70px;
+    padding-top: 90px;
+    margin-top: -90px;
 }
 
 #overlay-text {
@@ -85,29 +91,29 @@
     /* Stile für den großen Text */
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 8em; 
-    color: #FBF4E8; 
-    z-index: 500; 
+    font-size: 124px; 
+    color: #FBF4E7; 
+    z-index: 1; 
     transition: opacity 0.3s ease-out; 
 }
 
 .hamburger-menu {
     display: inline-block;
     cursor: pointer;
-    margin-left: 50px;
+    margin-left: 100px;
 }
 
 .bar1, .bar2, .bar3 {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
-    margin: 6px 0;
+    width: 50px;
+    height: 6px;
+    background-color: #48614A;
+    margin: 8px 0;
     transition: 0.4s;
 }
 
 /* Rotate first bar */
 .change .bar1 {
-    transform: translate(0, 11px) rotate(-45deg);
+    transform: translate(0, 14px) rotate(-45deg);
 }
 
 /* Fade out the second bar */
@@ -115,39 +121,40 @@
 
 /* Rotate last bar */
 .change .bar3 {
-    transform: translate(0, -11px) rotate(45deg);
+    transform: translate(0, -14px) rotate(45deg);
 }
 
 #logo{ 
-    height: 50px;
+    height: 70px;
     margin-right: 100px;
     margin-left: 50px;
 }
 
+/* Cart im Header */
 #icon {
-    height: 35px;
+    height: 65px;
     margin-right: 50px;
 }
 
 .button {
     font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    background-color: #FBF4E8;
+    font-weight: 800;
+    background-color: #FBF4E7;
     border: 1px solid #63503D;
-    color: black;
+    color: #63503D;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     border-radius: 12px;
 }
 
 .button:hover {
     background-color: #63503D; 
     color: white;
-    border: 1px solid #FBF4E8;
+    border: 1px solid #FBF4E7;
 }
 
 #button-login {
@@ -155,13 +162,9 @@
 }
 
 #button-signup {
-    margin-left: 1px;
     margin-right: 20px;
 }
 
-.container-main {
-    background-color: palevioletred;
-}
 
 #main-image {
     object-fit: cover;
@@ -169,7 +172,351 @@
     height: 100%;
 }
 
+#main-image-contact {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
+.container-main {
+    grid-row: 2;
+    display: grid;
+}
 
+.howItworks-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #63503D;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 30%; 
+    height: 70vh; 
+    perspective: 1000px; /* 3D-Effekt erzeugen */
+    float: left;
+    margin-top: 30px;
+    margin-left: 55px;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Der Container, der gedreht wird */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; /* Übergang für die Drehung */
+    transform-style: preserve-3d; /* Wichtig für 3D-Drehung */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* Drehen Sie den inneren Container um 180 Grad, wenn mit der Maus darüber gefahren wird */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Positionierung beider Seiten */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Stil für die Vorderseite (Bild) */
+.flip-card-front {
+    background-color: #DDCBB1;
+    color: #48614A;
+}
+
+/* Stil für die Rückseite (Text) */
+.flip-card-back {
+    background-color: #48614A;
+    color: #FBF4E7;
+    transform: rotateY(180deg); /* Die Rückseite drehen, damit sie nach vorne schaut, wenn der innere Container gedreht wird */
+    text-align: center;
+    padding: 40px;
+    font-size: 24px;
+}
+
+.flip-card-back h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.howItWorks-image {
+    max-width: 65%; /* Passt die Größe an die neue Container-Größe an */
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.card-title {
+    font-size: 38px;
+    font-weight: 600;
+}
+
+#secondHand-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #63503D;
+    text-align: left;
+    margin-top: 90px;
+    margin-left: 50px;
+}
+
+.row-gallery {
+    margin: 42px;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row-gallery,
+.row-gallery > .column {
+    padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 24%;
+    display: none; /* Hide columns by default */
+}
+
+/* Clear floats after rows */
+.row-gallery:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content */
+.content {
+    background-color: white;
+    padding: 50px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    color: #63503D;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+    display: block;
+}
+
+/* Add a dark background color to the active button */
+.button.active {
+    background-color: #63503D;
+    color: #FAF4E7;
+}
+
+#kiloButtons {
+    margin-left: 50px;
+}
+
+.howItworks-header h2 {
+    font-weight: 400;
+    font-size: 38px;
+}
+
+/* Style the form element with a border around it */
+form {
+    margin: 50px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #63503D;
+}
+
+.container-newsletter-picture {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+#clothing-stack {
+    width: 100%;
+    margin-top: 10%;
+}
+
+/* Style the input elements and the submit button */
+input[type=email], input[type=submit] {
+    width: 80%;
+    padding: 18px;
+    display: inline-block;
+    border: 1px solid #63503D;
+    box-sizing: border-box;
+    border-radius: 12px;
+    color:#63503D;
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+}
+
+/* Add margins to the checkbox */
+input[type=checkbox] {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+    background-color: #63503D;
+    color: #FBF4E7;
+    border: none;
+    border-radius: 12px;
+}
+
+input[type=submit]:hover {
+    opacity: 0.6;
+}
+
+label {
+    font-size: 16px;
+}
+
+#subscribe-text {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.container-footer {
+    grid-row: 3;
+    background-color: #DDCBB1;
+    text-align: center;
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 5% 25% 70%;
+    margin-top: 50px;
+    align-content: center;
+}
+
+.footer-column {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #48614A;
+}
+
+a {
+    text-decoration: none;
+    color:#48614A
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#footer-text {
+    margin-left: 60%;
+    text-align: center;
+    align-content: center;
+}
+
+#copyright {
+    font-size: 14px;
+    color: #48614A;
+    opacity: 0.7;
+    margin-top: 40px;
+    text-align: center;
+    margin-right: 200px;
+}
+
+#footer-logo {
+    height: 60px;
+    margin-left: 90px;
+}
+
+/* contact page styles */
+
+#main-image-contact {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#overlay-area-contact {
+    grid-row: 1;
+    position: relative;
+    height: calc(60vh - 90px);
+    margin-bottom: 10px;
+    padding-top: 90px;
+    margin-top: -90px;
+}
+
+iframe {
+    width: 590px;
+    height: 590px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 30%;
+}
+
+.container-contact-picture {
+    display: grid;
+    grid-template-columns: 65% 25%;
+    align-items: center;
+}
+
+textarea, input[type=name], input[type=mail]  {
+    width: 80%;
+    padding: 18px;
+    display: inline-block;
+    border: 1px solid #63503D;
+    box-sizing: border-box;
+    border-radius: 12px;
+    color:#63503D;
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    margin-right: 20%;
+}
+
+textarea {
+    height: 200px;
+    resize: vertical;
+}
+
+input[type=send] {
+    background-color: #63503D;
+    color: #FBF4E7;
+    border: none;
+    border-radius: 12px;
+    width: 80%;
+    padding: 18px;
+    display: inline-block;
+    border: 1px solid #63503D;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+input[type=send]:hover {
+    opacity: 0.6;
+}
+
+label[for="name"], label[for="mail"], label[for="message"] {
+    font-size: 24px;
+
+}
 
 
